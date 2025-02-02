@@ -4,10 +4,11 @@ Rate Limiter em Go que pode ser configurado para limitar o número máximo de re
 
 ## Funcionamento do Rate Limiter
 O Rate Limiter controla o tráfego de requisições para um serviço web. Limitando o número de requisições recebidas por segundo a um **limite** definido, e, caso o limite seja atingido, bloqueia o tráfego dessa origem por um **intervalo de tempo** definido. O limite de requisições e tempo de bloqueio podem ser definidos das seguintes formas:
-1. **Token de acesso único**: especificado no header API_KEY da requisição. O Rate Limiter busca as configurações do token no banco de dados.
-2. **Endereço IP**: O Rate Limiter verifica se o IP possui configurações de limiter exclusivas no banco de dados.
-3. **Default**: Caso não encontre nenhum limiter pré configurado para o Token ou o IP da requisição, o Rate Limiter segue com o limiter padrão da aplicação e faz a validação para o IP.
-A definição do limiter é feita da seguinte forma **Token > IP > Default**, ou seja, caso o Token e o IP da requisição tenham limiters pré configurados, o Rate Limiter se baseará nas configurações do Token.
+1. **Token de acesso único**: especificado no header API_KEY da requisição.
+2. **Endereço IP**: valores exclusivos para o IP.
+3. **Default**: valida o IP, com valores default da aplicação.
+
+A definição do limiter é feita na ordem **Token > IP > Default**, ou seja, caso o Token e o IP da requisição tenham limiters pré configurados, o Rate Limiter se baseará nas configurações do Token.
 
 ## Configuração do Rate Limiter
 Configurações de limiter:
